@@ -37,6 +37,8 @@ make install-strip
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
 
+%find_lang %{name}
+
 %post
  check if the command is already present:
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
@@ -77,7 +79,7 @@ EOF
 fi
 
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ABOUT-NLS AUTHORS BUGS COPYING FAQ INSTALL INTERNATIONAL
 %doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
@@ -90,22 +92,6 @@ fi
 %{_libdir}/libCw.a
 
 %{_libdir}/coolicon/*
-
-/%lang(cs)usr/share/locale/cs/LC_MESSAGES/cooledit.mo
-/%lang(da)usr/share/locale/da/LC_MESSAGES/cooledit.mo
-/%lang(de)usr/share/locale/de/LC_MESSAGES/cooledit.mo
-/%lang(es)usr/share/locale/es/LC_MESSAGES/cooledit.mo
-/%lang(fi)usr/share/locale/fi/LC_MESSAGES/cooledit.mo
-/%lang(fr)usr/share/locale/fr/LC_MESSAGES/cooledit.mo
-/%lang(it)usr/share/locale/it/LC_MESSAGES/cooledit.mo
-/%lang(ja)usr/share/locale/ja/LC_MESSAGES/cooledit.mo
-/%lang(ko)usr/share/locale/ko/LC_MESSAGES/cooledit.mo
-/%lang(nl)usr/share/locale/nl/LC_MESSAGES/cooledit.mo
-/%lang(no)usr/share/locale/no/LC_MESSAGES/cooledit.mo
-/%lang(pl)usr/share/locale/pl/LC_MESSAGES/cooledit.mo
-/%lang(pt)usr/share/locale/pt/LC_MESSAGES/cooledit.mo
-/%lang(sl)usr/share/locale/sl/LC_MESSAGES/cooledit.mo
-/%lang(sv)usr/share/locale/sv/LC_MESSAGES/cooledit.mo
 
 %{_mandir}/man1/*
 

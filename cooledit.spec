@@ -51,10 +51,6 @@ chmod -R +X %{name}-%{version})
 rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL \
-	MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog \
-	cooledit.lsm coolicon.lsm coolman.lsm
-
 %find_lang %{name}
 
 %post
@@ -101,9 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {ABOUT-NLS,AUTHORS,BUGS,FAQ,INTERNATIONAL}.gz
-%doc {MAILING_LIST,NEWS,PROGRAMMING,README,TODO,VERSION,ChangeLog}.gz
-%doc {cooledit.lsm,coolicon.lsm,coolman.lsm}.gz
+%doc ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL
+%doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
+%doc cooledit.lsm coolicon.lsm coolman.lsm
 
 %attr(755,root,root) %{_libdir}/libCw.so*
 %attr(755,root,root) %{_bindir}/*

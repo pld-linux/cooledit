@@ -12,7 +12,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
 BuildRequires:	automake
 
-%description 
+%description
 Full-featured X Window text editor; multiple edit windows; 3D
 Motif-ish look and feel; shift-arrow and mouse text highlighting;
 column text highlighting and manipulation; key for key undo; macro
@@ -58,9 +58,9 @@ gzip -9nf ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL \
 %find_lang %{name}
 
 %post
- check if the command is already present:	
+ check if the command is already present:
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
- estimate the speed of this machine:	
+ estimate the speed of this machine:
     BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
     BOGOMIPS="$BOGOMIPS"
     if test -z "$BOGOMIPS" ; then
@@ -69,7 +69,7 @@ if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
     if test "$BOGOMIPS" -gt "500" ; then
 	BOGOMIPS=500
     fi
- add use of shape extension if this is a fast machine:	
+ add use of shape extension if this is a fast machine:
     if test "$BOGOMIPS" -gt "80" ; then
 	COOLICON_OPTIONS="-s -X $BOGOMIPS"
     else

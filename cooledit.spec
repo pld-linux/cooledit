@@ -21,6 +21,18 @@ seamless shell interface; redefine keys with an easy interactive key
 learner; syntax highlighting for various file types; full support for
 proportional fonts.
 
+%description -l pl
+Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego najistotniejsze
+cechy to: obs³uga wielu okien edycyjnych, zaznaczanie tekstu za pomoc±
+shift-strza³ek i myszki, motiffowy wygl±d, kolumnowe zaznaczanie i modyfikacja
+tekstu, wielopoziomowe undo, nagrywanie makr, wyszykaj i zamieñ za pomoc±
+wyra¿eñ regularnych, menu, przeci±gnij i upu¶æ, interaktywna przegl±darka 
+stron podrêcznika systemowego (man), uruchamianie make oraz innych komend
+za pomoc± zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za
+pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
+plików, pe³na obs³uga fontów proporcjonalnych.
+
+
 %prep
 %setup -q
 #%patch -p1

@@ -42,7 +42,7 @@ chmod -R +X %{name}-%{version})
 %patch -p1
 
 %build
-aclocal
+%{__aclocal}
 %{__autoconf}
 %configure
 %{__make}

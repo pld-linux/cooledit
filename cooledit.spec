@@ -5,9 +5,6 @@ Version:	3.14.2
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Group(de):	Applikationen/Editors
-Group(pl):	Aplikacje/Edytory
-Group(pt):	Aplicações/Editores
 Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
 Patch0:		%{name}-install.patch
 Icon:		cooledit.gif

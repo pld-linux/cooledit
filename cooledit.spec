@@ -11,6 +11,7 @@ Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.g
 Patch0:		cooledit-install.patch
 Icon:		cooledit.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	autoconf
 
 %description 
 Full-featured X Window text editor; multiple edit windows; 3D
@@ -42,6 +43,8 @@ chmod -R +X %{name}-%{version})
 %patch -p1
 
 %build
+aclocal
+autoconf
 %configure
 %{__make}
 

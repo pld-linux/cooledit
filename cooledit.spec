@@ -66,34 +66,34 @@ umask 022
 # check if the command is already present:
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
 # estimate the speed of this machine:
-    BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
-    BOGOMIPS="$BOGOMIPS"
-    if test -z "$BOGOMIPS" ; then
-	BOGOMIPS=50
-    fi
-    if test "$BOGOMIPS" -gt "500" ; then
-	BOGOMIPS=500
-    fi
+	BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
+	BOGOMIPS="$BOGOMIPS"
+	if test -z "$BOGOMIPS" ; then
+		BOGOMIPS=50
+	fi
+	if test "$BOGOMIPS" -gt "500" ; then
+		BOGOMIPS=500
+	fi
 # add use of shape extension if this is a fast machine:
-    if test "$BOGOMIPS" -gt "80" ; then
-	COOLICON_OPTIONS="-s -X $BOGOMIPS"
-    else
-	COOLICON_OPTIONS="-X $BOGOMIPS"
-    fi
+	if test "$BOGOMIPS" -gt "80" ; then
+		COOLICON_OPTIONS="-s -X $BOGOMIPS"
+	else
+		COOLICON_OPTIONS="-X $BOGOMIPS"
+	fi
 
-    cat > temp.Xclients <<EOF
+	cat > temp.Xclients <<EOF
 #!/bin/sh
 
 # coolicon needs an existing mail file, even if it is empty
 MAILFILE=/var/mail/\$LOGNAME
 if test -f \$MAILFILE ; then
-coolicon $COOLICON_OPTIONS -M \$MAILFILE 2>&1 | coolmessage &
+	coolicon $COOLICON_OPTIONS -M \$MAILFILE 2>&1 | coolmessage &
 fi
 EOF
-    cat temp.Xclients %{_libdir}/X11/xinit/Xclients > temp2.Xclients
-    cp -f temp2.Xclients %{_libdir}/X11/xinit/Xclients
-    chmod 0755 %{_libdir}/X11/xinit/Xclients
-    rm -f temp.Xclients temp2.Xclients
+	cat temp.Xclients %{_libdir}/X11/xinit/Xclients > temp2.Xclients
+	cp -f temp2.Xclients %{_libdir}/X11/xinit/Xclients
+	chmod 0755 %{_libdir}/X11/xinit/Xclients
+	rm -f temp.Xclients temp2.Xclients
 fi
 
 %postun	-p /sbin/ldconfig

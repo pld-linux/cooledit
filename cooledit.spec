@@ -78,7 +78,7 @@ if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
     fi
 
     cat > temp.Xclients <<EOF
-#!/bin/bash
+#!/bin/sh
 
 # coolicon needs an existing mail file, even if it is empty
 MAILFILE=/var/mail/\$LOGNAME

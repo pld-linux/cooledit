@@ -35,7 +35,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install-strip
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man1/*
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %post
  check if the command is already present:
@@ -107,7 +107,7 @@ fi
 /%lang(sl)usr/share/locale/sl/LC_MESSAGES/cooledit.mo
 /%lang(sv)usr/share/locale/sv/LC_MESSAGES/cooledit.mo
 
-/usr/man/man1/*
+%{_mandir}/man1/*
 
 %changelog
 - built for PLD based on spec by anonim

@@ -1,13 +1,13 @@
 Summary:	Full featured multiple window programmer's text editor
 Summary(pl):	Funkcjonalny edytor tekstu dla programistów
 Name:		cooledit
-Version:	3.11.0
+Version:	3.14.2
 Release:	1
 Copyright:	GPL
 Group:		Applications/Editors
 Group(pl):	Aplikacje/Edytory
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
-#Patch:		cooledit.patch
+Patch:		cooledit-install.patch
 Icon:		cooledit.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,19 +33,24 @@ pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
 plików, pe³na obs³uga fontów proporcjonalnych.
 
 %prep
-%setup -q
-#%patch -p1
+%setup -q -T -c -D
+(cd ..
+gzip -dc %{SOURCE0} | tar -x --no-same-permission -f -
+chmod -R +X %{name}-%{version})
+%patch -p1
 
 %build
-%GNUconfigure
-
+%configure
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install-strip
+make install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
+	ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL \
+	MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog \
+	cooledit.lsm coolicon.lsm coolman.lsm
 
 %find_lang %{name}
 
@@ -88,11 +93,14 @@ EOF
     rm temp.Xclients temp2.Xclients
 fi
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc ABOUT-NLS AUTHORS BUGS COPYING FAQ INSTALL INTERNATIONAL
-%doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
-%doc cooledit.lsm coolicon.lsm coolman.lsm
+%doc {ABOUT-NLS,AUTHORS,BUGS,FAQ,INTERNATIONAL}.gz
+%doc {MAILING_LIST,NEWS,PROGRAMMING,README,TODO,VERSION,ChangeLog}.gz
+%doc {cooledit.lsm,coolicon.lsm,coolman.lsm}.gz
 
 %attr(755,root,root) %{_libdir}/libCw.so*
 %attr(755,root,root) %{_bindir}/*
@@ -101,5 +109,6 @@ fi
 %{_libdir}/libCw.a
 
 %{_libdir}/coolicon/*
+%{_libdir}/cooledit/*
 
 %{_mandir}/man1/*

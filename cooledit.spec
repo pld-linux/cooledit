@@ -39,7 +39,7 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %post
  check if the command is already present:
-if test -z "`grep coolicon /usr/lib/X11/xinit/Xclients`" ; then
+if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
  estimate the speed of this machine:
     BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
     BOGOMIPS="$BOGOMIPS"
@@ -70,9 +70,9 @@ fi
 coolicon $COOLICON_OPTIONS -M \$MAILFILE 2>&1 | coolmessage &
 
 EOF
-    cat temp.Xclients /usr/lib/X11/xinit/Xclients > temp2.Xclients
-    cp temp2.Xclients /usr/lib/X11/xinit/Xclients
-    chmod 0755 /usr/lib/X11/xinit/Xclients
+    cat temp.Xclients %{_libdir}/X11/xinit/Xclients > temp2.Xclients
+    cp temp2.Xclients %{_libdir}/X11/xinit/Xclients
+    chmod 0755 %{_libdir}/X11/xinit/Xclients
     rm temp.Xclients temp2.Xclients
 fi
 
@@ -83,13 +83,13 @@ fi
 %doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
 %doc cooledit.lsm coolicon.lsm coolman.lsm
 
-%attr(755, root, root) /usr/lib/libCw.so*
+%attr(755, root, root) %{_libdir}/libCw.so*
 %attr(755, root, root) /usr/bin/*
 
-/usr/lib/libCw.la
-/usr/lib/libCw.a
+%{_libdir}/libCw.la
+%{_libdir}/libCw.a
 
-/usr/lib/coolicon/*
+%{_libdir}/coolicon/*
 
 /%lang(cs)usr/share/locale/cs/LC_MESSAGES/cooledit.mo
 /%lang(da)usr/share/locale/da/LC_MESSAGES/cooledit.mo

@@ -36,15 +36,8 @@ interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
 plików, pe³na obs³uga fontów proporcjonalnych.
 
 %prep
-%setup -q -T -c -D
-cd ..
-gzip -dc %{SOURCE0} | tar -x --no-same-permission -f -
-chmod -R +X %{name}-%{version}
-cd %{name}-%{version}
+%setup -q
 
-%build
-%{__aclocal}
-%{__autoconf}
 %configure
 %{__make}
 
@@ -104,7 +97,7 @@ fi
 %{_libdir}/libCw.la
 %{_libdir}/libCw.a
 
-%{_libdir}/coolicon
-%{_libdir}/cooledit
+%{_datadir}/coolicon
+%{_datadir}/cooledit
 
 %{_mandir}/man1/*

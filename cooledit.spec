@@ -1,13 +1,13 @@
 Summary:	Full featured multiple window programmer's text editor
 Summary(pl):	Funkcjonalny edytor tekstu dla programistów
 Name:		cooledit
-Version:	3.17.5
+Version:	3.17.7
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	087b2ad31a4d63d8d6da31da5ade35a0
-Patch0:		%{name}-install.patch
+Source0:	http://cooledit.sourceforge.net/%{name}-%{version}.tar.gz
+# Source0-md5:	06e16994ebc2108e04dc7c6bd29981de
+URL:		http://cooledit.sourceforge.net/
 Icon:		cooledit.gif
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,7 +28,7 @@ Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego
 najistotniejsze cechy to: obs³uga wielu okien edycyjnych, zaznaczanie
 tekstu za pomoc± shift-strza³ek i myszki, motifowy wygl±d, kolumnowe
 zaznaczanie i modyfikacja tekstu, wielopoziomowe undo, nagrywanie
-makr, wyszykaj i zamieñ za pomoc± wyra¿eñ regularnych, menu,
+makr, wyszukaj i zamieñ za pomoc± wyra¿eñ regularnych, menu,
 przeci±gnij i upu¶æ, interaktywna przegl±darka stron podrêcznika
 systemowego (man), uruchamianie make oraz innych komend za pomoc±
 zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za pomoc±
@@ -41,7 +41,6 @@ cd ..
 gzip -dc %{SOURCE0} | tar -x --no-same-permission -f -
 chmod -R +X %{name}-%{version}
 cd %{name}-%{version}
-%patch -p1
 
 %build
 %{__aclocal}

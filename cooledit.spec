@@ -9,7 +9,7 @@ Group(pl):	Aplikacje/Edytory
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
 #Patch:		cooledit.patch
 Icon:		cooledit.gif
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
 Full-featured X Window text editor; multiple edit windows; 3D Motif-ish
@@ -31,7 +31,6 @@ stron podrêcznika systemowego (man), uruchamianie make oraz innych komend
 za pomoc± zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za
 pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
 plików, pe³na obs³uga fontów proporcjonalnych.
-
 
 %prep
 %setup -q
@@ -88,7 +87,6 @@ EOF
     chmod 0755 %{_libdir}/X11/xinit/Xclients
     rm temp.Xclients temp2.Xclients
 fi
-
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

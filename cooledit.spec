@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Editors
 Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	087b2ad31a4d63d8d6da31da5ade35a0
 Patch0:		%{name}-install.patch
 Icon:		cooledit.gif
 BuildRequires:	autoconf

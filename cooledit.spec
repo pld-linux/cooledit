@@ -1,11 +1,11 @@
 Summary:	Full featured multiple window programmer's text editor
 Summary(pl):	Funkcjonalny edytor tekstu dla programistów
 Name:		cooledit
-Version:	3.14.2
+Version:	3.17.5
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
+Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-install.patch
 Icon:		cooledit.gif
 BuildRequires:	autoconf

@@ -84,7 +84,7 @@ fi
 %doc cooledit.lsm coolicon.lsm coolman.lsm
 
 %attr(755, root, root) %{_libdir}/libCw.so*
-%attr(755, root, root) /usr/bin/*
+%attr(755, root, root) %{_bindir}/*
 
 %{_libdir}/libCw.la
 %{_libdir}/libCw.a

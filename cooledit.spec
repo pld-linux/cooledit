@@ -8,9 +8,9 @@ Group:		Applications/Editors
 Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
 Patch0:		%{name}-install.patch
 Icon:		cooledit.gif
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Full-featured X Window text editor; multiple edit windows; 3D
@@ -36,9 +36,10 @@ plików, pe³na obs³uga fontów proporcjonalnych.
 
 %prep
 %setup -q -T -c -D
-(cd ..
+cd ..
 gzip -dc %{SOURCE0} | tar -x --no-same-permission -f -
-chmod -R +X %{name}-%{version})
+chmod -R +X %{name}-%{version}
+cd %{name}-%{version}
 %patch -p1
 
 %build
@@ -53,10 +54,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %find_lang %{name}
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
- check if the command is already present:
+umask 022
+# check if the command is already present:
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
- estimate the speed of this machine:
+# estimate the speed of this machine:
     BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
     BOGOMIPS="$BOGOMIPS"
     if test -z "$BOGOMIPS" ; then
@@ -65,7 +70,7 @@ if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
     if test "$BOGOMIPS" -gt "500" ; then
 	BOGOMIPS=500
     fi
- add use of shape extension if this is a fast machine:
+# add use of shape extension if this is a fast machine:
     if test "$BOGOMIPS" -gt "80" ; then
 	COOLICON_OPTIONS="-s -X $BOGOMIPS"
     else
@@ -75,39 +80,30 @@ if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
     cat > temp.Xclients <<EOF
 #!/bin/bash
 
- coolicon needs an existing mail file, even if it is empty
-MAILFILE=/var/spool/mail/\$LOGNAME
+# coolicon needs an existing mail file, even if it is empty
+MAILFILE=/var/mail/\$LOGNAME
 if test -f \$MAILFILE ; then
-    cat /dev/null
-else
-    cat /dev/null > \$MAILFILE
-    chmod 0600 \$MAILFILE
-fi
 coolicon $COOLICON_OPTIONS -M \$MAILFILE 2>&1 | coolmessage &
-
+fi
 EOF
     cat temp.Xclients %{_libdir}/X11/xinit/Xclients > temp2.Xclients
-    cp temp2.Xclients %{_libdir}/X11/xinit/Xclients
+    cp -f temp2.Xclients %{_libdir}/X11/xinit/Xclients
     chmod 0755 %{_libdir}/X11/xinit/Xclients
-    rm temp.Xclients temp2.Xclients
+    rm -f temp.Xclients temp2.Xclients
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL
+%doc AUTHORS BUGS FAQ INTERNATIONAL
 %doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
 %doc cooledit.lsm coolicon.lsm coolman.lsm
-
-%attr(755,root,root) %{_libdir}/libCw.so*
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libCw.so*
 
 %{_libdir}/libCw.la
 %{_libdir}/libCw.a
 
-%{_libdir}/coolicon/*
-%{_libdir}/cooledit/*
+%{_libdir}/coolicon
+%{_libdir}/cooledit
 
 %{_mandir}/man1/*

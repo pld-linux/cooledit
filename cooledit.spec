@@ -3,33 +3,35 @@ Summary(pl):	Funkcjonalny edytor tekstu dla programistów
 Name:		cooledit
 Version:	3.14.2
 Release:	1
-Copyright:	GPL
+License:	GPL
 Group:		Applications/Editors
+Group(pt):	X11/Aplicações/Editores
 Group(pl):	Aplikacje/Edytory
-Source:		ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
-Patch:		cooledit-install.patch
+Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
+Patch0:		cooledit-install.patch
 Icon:		cooledit.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
-Full-featured X Window text editor; multiple edit windows; 3D Motif-ish
-look and feel; shift-arrow and mouse text highlighting; column text
-highlighting and manipulation; key for key undo; macro recording;
-regular expression search and replace; pull-down menus; drag and drop;
-interactive man page browser; run make and other shell commands with
-seamless shell interface; redefine keys with an easy interactive key
-learner; syntax highlighting for various file types; full support for
-proportional fonts.
+Full-featured X Window text editor; multiple edit windows; 3D
+Motif-ish look and feel; shift-arrow and mouse text highlighting;
+column text highlighting and manipulation; key for key undo; macro
+recording; regular expression search and replace; pull-down menus;
+drag and drop; interactive man page browser; run make and other shell
+commands with seamless shell interface; redefine keys with an easy
+interactive key learner; syntax highlighting for various file types;
+full support for proportional fonts.
 
 %description -l pl
-Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego najistotniejsze
-cechy to: obs³uga wielu okien edycyjnych, zaznaczanie tekstu za pomoc±
-shift-strza³ek i myszki, motiffowy wygl±d, kolumnowe zaznaczanie i modyfikacja
-tekstu, wielopoziomowe undo, nagrywanie makr, wyszykaj i zamieñ za pomoc±
-wyra¿eñ regularnych, menu, przeci±gnij i upu¶æ, interaktywna przegl±darka 
-stron podrêcznika systemowego (man), uruchamianie make oraz innych komend
-za pomoc± zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za
-pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
+Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego
+najistotniejsze cechy to: obs³uga wielu okien edycyjnych, zaznaczanie
+tekstu za pomoc± shift-strza³ek i myszki, motiffowy wygl±d, kolumnowe
+zaznaczanie i modyfikacja tekstu, wielopoziomowe undo, nagrywanie
+makr, wyszykaj i zamieñ za pomoc± wyra¿eñ regularnych, menu,
+przeci±gnij i upu¶æ, interaktywna przegl±darka stron podrêcznika
+systemowego (man), uruchamianie make oraz innych komend za pomoc±
+zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za pomoc±
+interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
 plików, pe³na obs³uga fontów proporcjonalnych.
 
 %prep
@@ -55,9 +57,9 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 %find_lang %{name}
 
 %post
- check if the command is already present:
+ check if the command is already present:	
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
- estimate the speed of this machine:
+ estimate the speed of this machine:	
     BOGOMIPS=`cat /proc/cpuinfo | grep bogomips | sed -e 's/^[^0-9]*//' -e 's/\..*$//'`
     BOGOMIPS="$BOGOMIPS"
     if test -z "$BOGOMIPS" ; then
@@ -66,7 +68,7 @@ if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
     if test "$BOGOMIPS" -gt "500" ; then
 	BOGOMIPS=500
     fi
- add use of shape extension if this is a fast machine:
+ add use of shape extension if this is a fast machine:	
     if test "$BOGOMIPS" -gt "80" ; then
 	COOLICON_OPTIONS="-s -X $BOGOMIPS"
     else

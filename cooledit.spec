@@ -9,8 +9,11 @@ Source0:	http://cooledit.sourceforge.net/%{name}-%{version}.tar.gz
 # Source0-md5:	06e16994ebc2108e04dc7c6bd29981de
 URL:		http://cooledit.sourceforge.net/
 Icon:		cooledit.gif
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	XFree86-devel
+Requires(post):	/sbin/ldconfig
+Requires(post):	coreutils
+Requires(post): grep
+Requires(post): sed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,27 +27,33 @@ interactive key learner; syntax highlighting for various file types;
 full support for proportional fonts.
 
 %description -l pl
-Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego
-najistotniejsze cechy to: obs³uga wielu okien edycyjnych, zaznaczanie
-tekstu za pomoc± shift-strza³ek i myszki, motifowy wygl±d, kolumnowe
-zaznaczanie i modyfikacja tekstu, wielopoziomowe undo, nagrywanie
-makr, wyszukaj i zamieñ za pomoc± wyra¿eñ regularnych, menu,
-przeci±gnij i upu¶æ, interaktywna przegl±darka stron podrêcznika
-systemowego (man), uruchamianie make oraz innych komend za pomoc±
-zintegrowanego interfejsu pow³oki, redefiniowanie klawiszy za pomoc±
-interaktywnego narzêdzia, pod¶wietlanie sk³adni rozmaitych typów
-plików, pe³na obs³uga fontów proporcjonalnych.
+Cooledit to pe³nowarto¶ciowy edytor tekstowy dla systemu X Window.
+Jego najistotniejsze cechy to: obs³uga wielu okien edycyjnych,
+zaznaczanie tekstu za pomoc± strza³ek z shiftem i myszki, motifowy
+wygl±d, kolumnowe zaznaczanie i modyfikacja tekstu, wielopoziomowe
+undo, nagrywanie makr, wyszukiwanie i zamiana za pomoc± wyra¿eñ
+regularnych, menu, "przeci±gnij i upu¶æ", interaktywna przegl±darka
+stron podrêcznika systemowego (man), uruchamianie make oraz innych
+poleceñ za pomoc± zintegrowanego interfejsu pow³oki, redefiniowanie
+klawiszy za pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni
+rozmaitych typów plików, pe³na obs³uga fontów proporcjonalnych.
 
 %prep
 %setup -q
 
-%configure
+%build
+%configure \
+	--disable-static
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# no -devel package, so useless
+rm -f $RPM_BUILD_ROOT%{_libdir}/libCw.{so,la}
 
 %find_lang %{name}
 
@@ -52,6 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
+/sbin/ldconfig
 umask 022
 # check if the command is already present:
 if test -z "`grep coolicon %{_libdir}/X11/xinit/Xclients`" ; then
@@ -86,18 +96,15 @@ EOF
     rm -f temp.Xclients temp2.Xclients
 fi
 
+%postun	-p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS FAQ INTERNATIONAL
 %doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
 %doc cooledit.lsm coolicon.lsm coolman.lsm
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libCw.so*
-
-%{_libdir}/libCw.la
-%{_libdir}/libCw.a
-
+%attr(755,root,root) %{_libdir}/libCw.so.*.*.*
 %{_datadir}/coolicon
 %{_datadir}/cooledit
-
 %{_mandir}/man1/*

@@ -5,10 +5,11 @@ Version:	3.14.2
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Group(pt):	X11/Aplicações/Editores
+Group(de):	Applikationen/Editors
 Group(pl):	Aplikacje/Edytory
+Group(pt):	Aplicações/Editores
 Source0:	ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
-Patch0:		cooledit-install.patch
+Patch0:		%{name}-install.patch
 Icon:		cooledit.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
@@ -53,8 +54,7 @@ autoconf
 rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL \
+gzip -9nf ABOUT-NLS AUTHORS BUGS FAQ INTERNATIONAL \
 	MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog \
 	cooledit.lsm coolicon.lsm coolman.lsm
 

@@ -94,6 +94,3 @@ fi
 %{_libdir}/coolicon/*
 
 %{_mandir}/man1/*
-
-%changelog
-- built for PLD based on spec by anonim

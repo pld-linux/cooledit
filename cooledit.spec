@@ -12,6 +12,7 @@ Patch0:		cooledit-install.patch
 Icon:		cooledit.gif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
+BuildRequires:	automake
 
 %description 
 Full-featured X Window text editor; multiple edit windows; 3D
@@ -26,7 +27,7 @@ full support for proportional fonts.
 %description -l pl
 Cooledit to pe³nowarto¶ciowy edytor tekstowy dla X Window. Jego
 najistotniejsze cechy to: obs³uga wielu okien edycyjnych, zaznaczanie
-tekstu za pomoc± shift-strza³ek i myszki, motiffowy wygl±d, kolumnowe
+tekstu za pomoc± shift-strza³ek i myszki, motifowy wygl±d, kolumnowe
 zaznaczanie i modyfikacja tekstu, wielopoziomowe undo, nagrywanie
 makr, wyszykaj i zamieñ za pomoc± wyra¿eñ regularnych, menu,
 przeci±gnij i upu¶æ, interaktywna przegl±darka stron podrêcznika

@@ -27,6 +27,7 @@ proportional fonts.
 
 %build
 %GNUconfigure
+
 make
 
 %install

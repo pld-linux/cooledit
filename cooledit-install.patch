@@ -1,0 +1,10 @@
+--- cooledit-3.14.2/pixmap/Makefile.am~	Mon Apr 24 11:54:27 2000
++++ cooledit-3.14.2/pixmap/Makefile.am	Sun May  7 17:50:27 2000
+@@ -6,7 +6,3 @@
+ 	spanner.xpm xterm.xpm xv.xpm cdrom_eject.xpm cdrom_view.xpm modify-xinitrc gmc.xpm \
+ 	lyx.xpm
+ 
+-install-data-local:
+-	chmod 0755 $(libdir)/coolicon/modify-xinitrc
+-	$(libdir)/coolicon/modify-xinitrc
+-

@@ -1,13 +1,13 @@
 Summary:	Full featured multiple window programmer's text editor
 Summary(pl):	Funkcjonalny edytor tekstowy dla programistów
 Name:		cooledit
-Version:	3.6.2
+Version:	3.11.0
 Release:	1
 Copyright:	GPL
 Group:		Applications/Editors
 Group(pl):	Aplikacje/Edytory
-Source:		sunsite.unc.edu/pub/Linux/apps/editors/X/cooledit-3.6.2.tar.gz
-Patch:		cooledit.patch
+Source:		ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/%{name}-%{version}.tar.gz
+#Patch:		cooledit.patch
 Icon:		cooledit.gif
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -23,12 +23,10 @@ proportional fonts.
 
 %prep
 %setup -q
-%patch -p1
+#%patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s \
-./configure %{_target_platform} \
-	--prefix=/usr
+%GNUconfigure
 make
 
 %install

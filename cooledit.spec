@@ -78,13 +78,13 @@ fi
 
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc ABOUT-NLS AUTHORS BUGS COPYING FAQ INSTALL INTERNATIONAL
 %doc MAILING_LIST NEWS PROGRAMMING README TODO VERSION ChangeLog
 %doc cooledit.lsm coolicon.lsm coolman.lsm
 
-%attr(755, root, root) %{_libdir}/libCw.so*
-%attr(755, root, root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libCw.so*
+%attr(755,root,root) %{_bindir}/*
 
 %{_libdir}/libCw.la
 %{_libdir}/libCw.a

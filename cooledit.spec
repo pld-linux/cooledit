@@ -43,7 +43,7 @@ chmod -R +X %{name}-%{version})
 
 %build
 aclocal
-autoconf
+%{__autoconf}
 %configure
 %{__make}
 

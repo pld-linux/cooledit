@@ -10,10 +10,10 @@ Source0:	http://cooledit.sourceforge.net/%{name}-%{version}.tar.gz
 URL:		http://cooledit.sourceforge.net/
 Icon:		cooledit.gif
 BuildRequires:	XFree86-devel
-Requires(post):	/sbin/ldconfig
+Requires(post,postun):	/sbin/ldconfig
 Requires(post):	coreutils
-Requires(post): grep
-Requires(post): sed
+Requires(post):	grep
+Requires(post):	sed
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

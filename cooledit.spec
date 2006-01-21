@@ -8,7 +8,6 @@ Group:		Applications/Editors
 Source0:	http://cooledit.sourceforge.net/%{name}-%{version}.tar.gz
 # Source0-md5:	06e16994ebc2108e04dc7c6bd29981de
 URL:		http://cooledit.sourceforge.net/
-Icon:		cooledit.gif
 BuildRequires:	XFree86-devel
 Requires(post):	/sbin/ldconfig
 Requires(post):	coreutils

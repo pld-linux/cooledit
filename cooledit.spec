@@ -1,5 +1,5 @@
 Summary:	Full featured multiple window programmer's text editor
-Summary(pl.UTF-8):   Funkcjonalny edytor tekstu dla programistów
+Summary(pl.UTF-8):	Funkcjonalny edytor tekstu dla programistów
 Name:		cooledit
 Version:	3.17.7
 Release:	1

@@ -1,5 +1,5 @@
 Summary:	Full featured multiple window programmer's text editor
-Summary(pl):	Funkcjonalny edytor tekstu dla programistów
+Summary(pl.UTF-8):   Funkcjonalny edytor tekstu dla programistÃ³w
 Name:		cooledit
 Version:	3.17.7
 Release:	1
@@ -25,17 +25,17 @@ commands with seamless shell interface; redefine keys with an easy
 interactive key learner; syntax highlighting for various file types;
 full support for proportional fonts.
 
-%description -l pl
-Cooledit to pe³nowarto¶ciowy edytor tekstowy dla systemu X Window.
-Jego najistotniejsze cechy to: obs³uga wielu okien edycyjnych,
-zaznaczanie tekstu za pomoc± strza³ek z shiftem i myszki, motifowy
-wygl±d, kolumnowe zaznaczanie i modyfikacja tekstu, wielopoziomowe
-undo, nagrywanie makr, wyszukiwanie i zamiana za pomoc± wyra¿eñ
-regularnych, menu, "przeci±gnij i upu¶æ", interaktywna przegl±darka
-stron podrêcznika systemowego (man), uruchamianie make oraz innych
-poleceñ za pomoc± zintegrowanego interfejsu pow³oki, redefiniowanie
-klawiszy za pomoc± interaktywnego narzêdzia, pod¶wietlanie sk³adni
-rozmaitych typów plików, pe³na obs³uga fontów proporcjonalnych.
+%description -l pl.UTF-8
+Cooledit to peÅ‚nowartoÅ›ciowy edytor tekstowy dla systemu X Window.
+Jego najistotniejsze cechy to: obsÅ‚uga wielu okien edycyjnych,
+zaznaczanie tekstu za pomocÄ… strzaÅ‚ek z shiftem i myszki, motifowy
+wyglÄ…d, kolumnowe zaznaczanie i modyfikacja tekstu, wielopoziomowe
+undo, nagrywanie makr, wyszukiwanie i zamiana za pomocÄ… wyraÅ¼eÅ„
+regularnych, menu, "przeciÄ…gnij i upuÅ›Ä‡", interaktywna przeglÄ…darka
+stron podrÄ™cznika systemowego (man), uruchamianie make oraz innych
+poleceÅ„ za pomocÄ… zintegrowanego interfejsu powÅ‚oki, redefiniowanie
+klawiszy za pomocÄ… interaktywnego narzÄ™dzia, podÅ›wietlanie skÅ‚adni
+rozmaitych typÃ³w plikÃ³w, peÅ‚na obsÅ‚uga fontÃ³w proporcjonalnych.
 
 %prep
 %setup -q
